@@ -1,0 +1,16 @@
+name: Prettier Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code ⬇️
+        uses: actions/checkout@v3
+
+      - name: Run Prettier Check 🔎
+        run: npx prettier --check .
