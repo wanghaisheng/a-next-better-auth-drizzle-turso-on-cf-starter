@@ -1,3 +1,8 @@
+"use client";
+
+import { useState, type ComponentPropsWithoutRef } from "react";
+import Link from "next/link";
+import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,11 +14,26 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/components/ui/password-input";
+import { Checkbox } from "@/components/ui/checkbox";
+
+import { signIn } from "@/lib/auth-client";
+
+export interface LoginFormProps extends ComponentPropsWithoutRef<"div"> {
+    enablePasswordReset?: boolean;
+}
 
 export function LoginForm({
     className,
+    enablePasswordReset,
     ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: LoginFormProps) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [rememberMe, setRememberMe] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
             <Card>
@@ -33,35 +53,98 @@ export function LoginForm({
                                     type="email"
                                     placeholder="m@example.com"
                                     required
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                        setError("");
+                                    }}
+                                    value={email}
                                 />
                             </div>
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
-                                    <a
-                                        href="#"
-                                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                                    >
-                                        Forgot your password?
-                                    </a>
+                                    {enablePasswordReset && (
+                                        <Link
+                                            href="/forgot-password"
+                                            className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                                        >
+                                            Forgot your password?
+                                        </Link>
+                                    )}
                                 </div>
-                                <Input id="password" type="password" required />
+                                <PasswordInput
+                                    id="password"
+                                    value={password}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                        setError("");
+                                    }}
+                                    autoComplete="password"
+                                    placeholder="Password"
+                                />
                             </div>
-                            <Button type="submit" className="w-full">
-                                Login
-                            </Button>
-                            <Button variant="outline" className="w-full">
-                                Login with Google
+                            <div className="flex items-center space-x-2">
+                                <Checkbox
+                                    id="remember"
+                                    checked={rememberMe}
+                                    onCheckedChange={(checked) =>
+                                        setRememberMe(checked as boolean)
+                                    }
+                                />
+                                <Label htmlFor="remember">Remember me</Label>
+                            </div>
+                            {error && (
+                                <div className="text-sm text-red-500">
+                                    {error}
+                                </div>
+                            )}
+
+                            <Button
+                                type="submit"
+                                className="w-full"
+                                disabled={loading}
+                                onClick={async () => {
+                                    await signIn.email(
+                                        {
+                                            email: email,
+                                            password: password,
+                                            callbackURL: "/dashboard",
+                                            rememberMe,
+                                        },
+                                        {
+                                            onRequest: () => {
+                                                setLoading(true);
+                                                setError("");
+                                            },
+                                            onResponse: () => {
+                                                setLoading(false);
+                                            },
+                                            onError: (ctx) => {
+                                                setError(ctx.error.message);
+                                                setLoading(false);
+                                            },
+                                        },
+                                    );
+                                }}
+                            >
+                                {loading ? (
+                                    <Loader2
+                                        size={16}
+                                        className="animate-spin"
+                                    />
+                                ) : (
+                                    "Login"
+                                )}
                             </Button>
                         </div>
                         <div className="mt-4 text-center text-sm">
                             Don&apos;t have an account?{" "}
-                            <a
-                                href="#"
+                            <Link
+                                href="/sign-up"
                                 className="underline underline-offset-4"
                             >
                                 Sign up
-                            </a>
+                            </Link>
                         </div>
                     </form>
                 </CardContent>
