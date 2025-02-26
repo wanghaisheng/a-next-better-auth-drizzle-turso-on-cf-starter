@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { reactResetPasswordEmail } from "./email/rest-password";
+import { reactResetPasswordEmail } from "./email/reset-password";
 import { resend } from "./email/resend";
 import { account, db, session, user, verification } from "../db";
 
@@ -13,19 +13,17 @@ export const auth = betterAuth({
     }),
     emailAndPassword: {
         enabled: true, // Enables email/password auth out of the box
-        emailAndPassword: {
-            enabled: true,
-            async sendResetPassword({ user, url }) {
-                await resend.emails.send({
-                    from,
-                    to: user.email,
-                    subject: "Reset your password",
-                    react: reactResetPasswordEmail({
-                        username: user.email,
-                        resetLink: url,
-                    }),
-                });
-            },
+        requireEmailVerification: !(process.env.VERIFY_EMAIL === "false"),
+        async sendResetPassword({ user, url }) {
+            await resend.emails.send({
+                from,
+                to: user.email,
+                subject: "Reset your password",
+                react: reactResetPasswordEmail({
+                    username: user.email,
+                    resetLink: url,
+                }),
+            });
         },
     },
     emailVerification: {

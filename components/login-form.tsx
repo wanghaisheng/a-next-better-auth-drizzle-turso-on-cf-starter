@@ -19,15 +19,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 import { signIn } from "@/lib/auth-client";
 
-export interface LoginFormProps extends ComponentPropsWithoutRef<"div"> {
-    enablePasswordReset?: boolean;
-}
+export type LoginFormProps = ComponentPropsWithoutRef<"div">;
 
-export function LoginForm({
-    className,
-    enablePasswordReset,
-    ...props
-}: LoginFormProps) {
+export function LoginForm({ className, ...props }: LoginFormProps) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
@@ -63,14 +57,12 @@ export function LoginForm({
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
-                                    {enablePasswordReset && (
-                                        <Link
-                                            href="/forgot-password"
-                                            className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                                        >
-                                            Forgot your password?
-                                        </Link>
-                                    )}
+                                    <Link
+                                        href="/forgot-password"
+                                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                                    >
+                                        Forgot your password?
+                                    </Link>
                                 </div>
                                 <PasswordInput
                                     id="password"
