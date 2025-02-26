@@ -13,55 +13,56 @@ import {
     Section,
 } from "@react-email/components";
 
-interface ProjectNameResetPasswordEmailProps {
+interface ProjectNameVerifyEmailProps {
     username?: string;
-    resetLink?: string;
+    verificationLink?: string;
 }
 
-export const ResetPasswordEmail = ({
+export const VerifyEmailEmail = ({
     username,
-    resetLink,
-}: ProjectNameResetPasswordEmailProps) => {
+    verificationLink,
+}: ProjectNameVerifyEmailProps) => {
     return (
         <Html>
             <Head />
-            <Preview>{`Reset your ProjectName password`}</Preview>
+            <Preview>{`Verify your ProjectName email address`}</Preview>
             <Tailwind>
                 <Body className="bg-white my-auto mx-auto font-sans px-2">
                     <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] max-w-[465px]">
                         <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
-                            Reset your <strong>ProjectName</strong> password
+                            Verify your <strong>ProjectName</strong> email
+                            address
                         </Heading>
                         <Text className="text-black text-[14px] leading-[24px]">
                             Hello {username},
                         </Text>
                         <Text className="text-black text-[14px] leading-[24px]">
-                            We received a request to reset your password for
-                            your ProjectName account. If you didn&apos;t make
-                            this request, you can safely ignore this email.
+                            Thank you for signing up for ProjectName. To
+                            complete your registration and verify your email
+                            address, please click the button below.
                         </Text>
                         <Section className="text-center mt-[32px] mb-[32px]">
                             <Button
                                 className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline text-center px-5 py-3"
-                                href={resetLink}
+                                href={verificationLink}
                             >
-                                Reset Password
+                                Verify Email Address
                             </Button>
                         </Section>
                         <Text className="text-black text-[14px] leading-[24px]">
                             Or copy and paste this URL into your browser:{" "}
                             <Link
-                                href={resetLink}
+                                href={verificationLink}
                                 className="text-blue-600 no-underline"
                             >
-                                {resetLink}
+                                {verificationLink}
                             </Link>
                         </Text>
                         <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
                         <Text className="text-[#666666] text-[12px] leading-[24px]">
-                            If you didn&apos;t request a password reset, please
-                            ignore this email or contact support if you have
-                            concerns.
+                            If you didn&apos;t create an account on ProjectName,
+                            please ignore this email or contact support if you
+                            have any concerns.
                         </Text>
                     </Container>
                 </Body>
@@ -70,8 +71,6 @@ export const ResetPasswordEmail = ({
     );
 };
 
-export function reactResetPasswordEmail(
-    props: ProjectNameResetPasswordEmailProps,
-) {
-    return <ResetPasswordEmail {...props} />;
+export function reactVerifyEmailEmail(props: ProjectNameVerifyEmailProps) {
+    return <VerifyEmailEmail {...props} />;
 }

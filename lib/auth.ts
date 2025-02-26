@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { reactResetPasswordEmail } from "./email/reset-password";
+import { reactVerifyEmailEmail } from "./email/verify-email";
 import { resend } from "./email/resend";
 import { account, db, session, user, verification } from "../db";
 
@@ -20,7 +21,7 @@ export const auth = betterAuth({
                 to: user.email,
                 subject: "Reset your password",
                 react: reactResetPasswordEmail({
-                    username: user.email,
+                    username: user.name,
                     resetLink: url,
                 }),
             });
@@ -28,13 +29,15 @@ export const auth = betterAuth({
     },
     emailVerification: {
         async sendVerificationEmail({ user, url }) {
-            const res = await resend.emails.send({
+            await resend.emails.send({
                 from,
                 to: user.email,
                 subject: "Verify your email address",
-                html: `<a href="${url}">Verify your email address</a>`,
+                react: reactVerifyEmailEmail({
+                    username: user.name,
+                    verificationLink: url,
+                }),
             });
-            console.log(res, user.email);
         },
     },
 });
