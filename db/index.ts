@@ -1,5 +1,8 @@
-import "dotenv/config";
 import { drizzle } from "drizzle-orm/libsql";
+
+if (typeof EdgeRuntime !== "string") {
+    require("dotenv").config();
+}
 
 export const db = drizzle({
     connection: {

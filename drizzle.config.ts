@@ -1,5 +1,8 @@
-import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
+
+if (typeof EdgeRuntime !== "string") {
+    require("dotenv").config();
+}
 
 export default defineConfig({
     out: "./db/migrations",

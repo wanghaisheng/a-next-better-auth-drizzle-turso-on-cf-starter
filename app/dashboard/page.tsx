@@ -4,6 +4,8 @@ import { auth } from "@/lib/auth";
 import { DashboardStub } from "@/components/dashboard/dashboard-stub";
 import { VerifyEmailCard } from "@/components/dashboard/verify-email-card";
 
+export const runtime = "edge";
+
 export default async function DashboardPage() {
     const session = await auth.api.getSession({
         headers: await headers(),

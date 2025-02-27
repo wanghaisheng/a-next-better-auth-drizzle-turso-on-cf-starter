@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { reactResetPasswordEmail } from "./email/reset-password";
-import { reactVerifyEmailEmail } from "./email/verify-email";
+// import { reactResetPasswordEmail } from "./email/reset-password";
+// import { reactVerifyEmailEmail } from "./email/verify-email";
 import { resend } from "./email/resend";
 import { account, db, session, user, verification } from "../db";
 
@@ -19,11 +19,14 @@ export const auth = betterAuth({
             await resend.emails.send({
                 from,
                 to: user.email,
-                subject: "Reset your password",
-                react: reactResetPasswordEmail({
-                    username: user.name,
-                    resetLink: url,
-                }),
+                subject: "Reset your passwordd",
+                text: `Hey ${user}, here is your password reset link: ${url}`,
+                // Doesn't work with edge runtime atm.
+                // See https://github.com/resend/react-email/issues/1630
+                // react: reactResetPasswordEmail({
+                //     username: user.name,
+                //     resetLink: url,
+                // }),
             });
         },
     },
@@ -33,10 +36,13 @@ export const auth = betterAuth({
                 from,
                 to: user.email,
                 subject: "Verify your email address",
-                react: reactVerifyEmailEmail({
-                    username: user.name,
-                    verificationLink: url,
-                }),
+                text: `Hey ${user}, verify your email address, please: ${url}`,
+                // Doesn't work with edge runtime atm.
+                // See https://github.com/resend/react-email/issues/1630
+                // react: reactVerifyEmailEmail({
+                //     username: user.name,
+                //     verificationLink: url,
+                // }),
             });
         },
     },
