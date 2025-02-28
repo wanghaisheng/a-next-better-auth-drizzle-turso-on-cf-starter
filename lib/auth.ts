@@ -3,6 +3,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 // import { reactResetPasswordEmail } from "./email/reset-password";
 // import { reactVerifyEmailEmail } from "./email/verify-email";
 import { resend } from "./email/resend";
+import { hash, verify } from "./auth-hasher";
 import { account, db, session, user, verification } from "../db";
 
 const from = process.env.BETTER_AUTH_EMAIL || "delivered@resend.dev";
@@ -19,8 +20,8 @@ export const auth = betterAuth({
             await resend.emails.send({
                 from,
                 to: user.email,
-                subject: "Reset your passwordd",
-                text: `Hey ${user}, here is your password reset link: ${url}`,
+                subject: "Reset your password",
+                text: `Hey ${user.name}, here is your password reset link: ${url}`,
                 // Doesn't work with edge runtime atm.
                 // See https://github.com/resend/react-email/issues/1630
                 // react: reactResetPasswordEmail({
@@ -29,6 +30,8 @@ export const auth = betterAuth({
                 // }),
             });
         },
+        // Custom hasher to avoid hitting CPU limit
+        password: { hash, verify },
     },
     emailVerification: {
         async sendVerificationEmail({ user, url }) {
@@ -36,7 +39,7 @@ export const auth = betterAuth({
                 from,
                 to: user.email,
                 subject: "Verify your email address",
-                text: `Hey ${user}, verify your email address, please: ${url}`,
+                text: `Hey ${user.name}, verify your email address, please: ${url}`,
                 // Doesn't work with edge runtime atm.
                 // See https://github.com/resend/react-email/issues/1630
                 // react: reactVerifyEmailEmail({
