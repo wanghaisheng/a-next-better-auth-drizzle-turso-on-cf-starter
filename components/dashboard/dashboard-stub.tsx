@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2, LogOut } from "lucide-react";
 import {
     Card,
@@ -16,6 +16,18 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/src/i18n/navigation";
 // Import component styles
 import styles from '../../src/components.module.css';
+
+// Client-side only date component to prevent hydration mismatch
+function ClientDate() {
+    const [date, setDate] = useState<string>('');
+    
+    useEffect(() => {
+        // Only set the date on the client side
+        setDate(new Date().toLocaleDateString());
+    }, []);
+    
+    return <>{date}</>;
+}
 
 interface DashboardStubProps {
     user: User;
@@ -58,7 +70,7 @@ export function DashboardStub({ user }: DashboardStubProps) {
                             <span className="text-muted-foreground">Account Created:</span>
                         </div>
                         <div>
-                            {new Date().toLocaleDateString()}
+                            <ClientDate />
                         </div>
                     </div>
                 </div>

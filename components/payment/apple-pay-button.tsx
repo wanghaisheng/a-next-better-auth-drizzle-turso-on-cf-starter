@@ -34,7 +34,7 @@ export default function ApplePayButton({
 
     // Create a payment request for Apple Pay
     const pr = stripe.paymentRequest({
-      country: "US", // Change according to your location
+      country: "US", // Change according to your location or make it configurable
       currency: currency.toLowerCase(),
       total: {
         label,
@@ -44,7 +44,7 @@ export default function ApplePayButton({
       requestPayerEmail: true,
       requestShipping: false,
       merchantCapabilities: ['supports3DS'],
-      supportedNetworks: ['mastercard', 'visa', 'amex', 'discover'],
+      supportedNetworks: ['mastercard', 'visa', 'amex', 'discover', 'jcb'], // Added JCB for Japanese market
     });
 
     // Check if the Payment Request is available (Apple Pay supported)

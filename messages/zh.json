@@ -8,5 +8,33 @@
     "learn": "学习 Next.js",
     "examples": "模板和示例",
     "goToNextjs": "前往 Next.js"
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "submitButton": "登录"
+    },
+    "signup": {
+      "title": "注册",
+      "description": "输入您的信息以创建账户",
+      "firstNameLabel": "名字",
+      "lastNameLabel": "姓氏",
+      "confirmPasswordLabel": "确认密码",
+      "profileImageLabel": "个人头像（可选）",
+      "passwordMismatch": "请确保您的密码和确认密码匹配。",
+      "submitButton": "注册",
+      "haveAccount": "已有账户？"
+    },
+    "email": "邮箱",
+    "password": "密码",
+    "rememberMe": "记住我",
+    "forgotPassword": "忘记密码？",
+    "enterEmailToLogin": "请输入您的邮箱以登录您的账户",
+    "dontHaveAccount": "还没有账户？",
+    "logout": "退出登录"
+  },
+  "errors": {
+    "invalidCredentials": "邮箱或密码无效",
+    "serverError": "服务器错误，请稍后再试"
   }
 }

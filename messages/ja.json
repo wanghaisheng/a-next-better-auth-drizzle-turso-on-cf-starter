@@ -1,12 +1,40 @@
 {
   "common": {
-    "welcome": "Next.jsへようこそ",
-    "getStartedByEditing": "編集を開始する",
+    "welcome": "Next.js へようこそ",
+    "getStartedByEditing": "編集を始める",
     "saveAndSeeChanges": "変更を保存して、ブラウザですぐに結果を確認できます。",
     "loginNow": "今すぐログイン",
     "createAccount": "アカウント作成",
-    "learn": "Next.jsを学ぶ",
+    "learn": "Next.js を学ぶ",
     "examples": "テンプレートと例",
-    "goToNextjs": "Next.jsに移動"
+    "goToNextjs": "Next.js に移動"
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "submitButton": "サインイン"
+    },
+    "signup": {
+      "title": "サインアップ",
+      "description": "アカウントを作成するには情報を入力してください",
+      "firstNameLabel": "名",
+      "lastNameLabel": "姓",
+      "confirmPasswordLabel": "パスワード確認",
+      "profileImageLabel": "プロフィール画像（任意）",
+      "passwordMismatch": "パスワードと確認用パスワードが一致していることを確認してください。",
+      "submitButton": "サインアップ",
+      "haveAccount": "すでにアカウントをお持ちですか？"
+    },
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "rememberMe": "ログイン状態を保持する",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "enterEmailToLogin": "アカウントにログインするには、メールアドレスを入力してください",
+    "dontHaveAccount": "アカウントをお持ちでないですか？",
+    "logout": "サインアウト"
+  },
+  "errors": {
+    "invalidCredentials": "メールアドレスまたはパスワードが無効です",
+    "serverError": "サーバーエラーが発生しました。後でもう一度お試しください"
   }
 }

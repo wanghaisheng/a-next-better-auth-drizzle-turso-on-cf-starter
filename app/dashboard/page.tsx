@@ -1,6 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+// Client-side only date component to prevent hydration mismatch
+function ClientDate() {
+  const [date, setDate] = useState<string>('');
+  
+  useEffect(() => {
+    // Only set the date on the client side
+    setDate(new Date().toLocaleDateString());
+  }, []);
+  
+  return <>{date}</>;
+}
 
 export default function DashboardPage() {
   return (
@@ -28,7 +41,10 @@ export default function DashboardPage() {
             <div className="text-amber-600 dark:text-amber-400">Demo Mode</div>
 
             <div className="font-medium text-gray-500 dark:text-gray-400">Created:</div>
-            <div>{new Date().toLocaleDateString()}</div>
+            <div>
+  {/* Use client-side rendering for date to prevent hydration mismatch */}
+  <ClientDate />
+</div>
           </div>
 
           <div className="mt-6 flex justify-end">

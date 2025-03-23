@@ -10,6 +10,19 @@ export const user = sqliteTable("user", {
     updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
 });
 
+// Push notification subscriptions table
+export const pushSubscriptions = sqliteTable("push_subscription", {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+        .notNull()
+        .references(() => user.id, { onDelete: "cascade" }),
+    endpoint: text("endpoint").notNull(),
+    p256dh: text("p256dh").notNull(),
+    auth: text("auth").notNull(),
+    createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+    updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+});
+
 export const session = sqliteTable("session", {
     id: text("id").primaryKey(),
     expiresAt: integer("expires_at", { mode: "timestamp" }).notNull(),

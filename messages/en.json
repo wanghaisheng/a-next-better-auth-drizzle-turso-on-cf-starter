@@ -8,5 +8,52 @@
     "learn": "Learn Next.js",
     "examples": "Templates & Examples",
     "goToNextjs": "Go to Next.js"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "backToHome": "Back to Home",
+    "description": "Complete your purchase to get access to premium features.",
+    "demoNotice": "This is a demonstration of Apple Pay integration. No actual charges will be made.",
+    "testingInstructions": "For testing, use Apple Pay on a compatible device or simulator.",
+    "loadingPaymentOptions": "Loading payment options...",
+    "loading": "Loading...",
+    "orPayWithCard": "Or pay with card",
+    "payWithCard": "Pay with Card",
+    "paymentFailed": "Payment failed. Please try again.",
+    "success": {
+      "title": "Payment Successful!",
+      "thankYouMessage": "Thank you for your purchase. Your transaction has been completed successfully.",
+      "returnHome": "Return to Home",
+      "backToCheckout": "Back to Checkout",
+      "demoNotice": "This is a demo. No actual payment was processed."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "submitButton": "Sign in"
+    },
+    "signup": {
+      "title": "Sign up",
+      "description": "Enter your information to create an account",
+      "firstNameLabel": "First name",
+      "lastNameLabel": "Last name",
+      "confirmPasswordLabel": "Confirm Password",
+      "profileImageLabel": "Profile Image (optional)",
+      "passwordMismatch": "Please ensure your password and confirm password match.",
+      "submitButton": "Sign up",
+      "haveAccount": "Already have an account?"
+    },
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "enterEmailToLogin": "Enter your email below to login to your account",
+    "dontHaveAccount": "Don't have an account?",
+    "logout": "Sign out"
+  },
+  "errors": {
+    "invalidCredentials": "Invalid email or password",
+    "serverError": "Server error, please try again later"
   }
 }

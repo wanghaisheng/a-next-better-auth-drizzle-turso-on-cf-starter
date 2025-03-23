@@ -10,7 +10,8 @@ export default async function AuthLayout({
     params: { locale: string };
 }>) {
     // Enable static rendering with explicit locale
-    await setRequestLocale(params.locale);
+    const locale = await Promise.resolve(params.locale);
+    await setRequestLocale(locale);
 
     return (
         <>

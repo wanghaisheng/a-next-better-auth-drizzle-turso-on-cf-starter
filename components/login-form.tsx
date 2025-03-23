@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import { PasswordInput } from "@/components/ui/password-input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useTranslations } from 'next-intl';
-import { Link } from '@/src/i18n/navigation';
+import { Link } from '@/src/i18n/routing';
 // Import component styles
 import styles from '../src/components.module.css';
 

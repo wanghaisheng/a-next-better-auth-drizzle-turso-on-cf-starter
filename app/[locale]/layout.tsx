@@ -20,10 +20,10 @@ export default async function LocaleLayout({
   params,
 }: RootLayoutProps) {
   // Destructure the locale to avoid nextjs warning
-  const { locale } = params;
-
+  const locale = await Promise.resolve(params.locale);
+  
   // Validate that the incoming locale is valid
-  if (!hasLocale(routing.locales, locale)) {
+  if (!hasLocale(routing.locales, await Promise.resolve(locale))) {
     notFound();
   }
 

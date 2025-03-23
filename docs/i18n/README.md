@@ -15,6 +15,12 @@ This directory contains comprehensive documentation for the internationalization
 - **[多语言支持实现指南](./zh/01-implementation.md)** - 完整的多语言实现指南
 - **[多语言动态数据处理指南](./zh/02-dynamic-data.md)** - 如何处理多语言数据库内容
 
+### Japanese Documentation (日本語ドキュメント)
+
+- **[国際化（i18n）実装ガイド](./ja/01-implementation.md)** - i18n実装の完全ガイド
+- **[多言語動的データ処理](./ja/02-dynamic-data.md)** - 多言語データベースコンテンツの処理方法
+- **[ハイドレーション問題の回避](./ja/03-hydration.md)** - i18nでのReactハイドレーション問題解決ガイド
+
 ## Key Components
 
 Our i18n implementation consists of:
