@@ -1,15 +1,14 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link } from "@/src/i18n/navigation";
+import { Link } from "@/src/i18n/routing"; // Update this import to use the correct path
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { setRequestLocale } from "next-intl/server";
 
 // This function handles the async locale setup
 export async function generateMetadata({ params }: { params: { locale: string } }) {
-  // Destructure to prevent Next.js warning
-  const { locale } = params;
-  await setRequestLocale(locale);
+  // Access locale directly without destructuring
+  await setRequestLocale(params.locale);
   return {};
 }
 

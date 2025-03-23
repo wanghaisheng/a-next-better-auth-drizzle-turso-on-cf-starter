@@ -26,6 +26,8 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
+import './globals.css'; // Import CSS directly instead of using link tags
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -35,14 +37,11 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <head>
                 <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-                {/* Force the browser to reload CSS */}
-                <link rel="stylesheet" href="/reset.css" />
-                <link rel="stylesheet" href="/globals.css" />
+                {/* Remove the manual CSS links */}
             </head>
             <body className="antialiased bg-background text-foreground">
-                {/* Script to ensure CSS is loaded properly */}
-                <Script src="/inject-styles.js" strategy="beforeInteractive" />
-
+                {/* Remove the inject-styles script if it's not needed */}
+                
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"

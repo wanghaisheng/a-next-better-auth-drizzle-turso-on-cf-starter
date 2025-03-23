@@ -1,5 +1,11 @@
-// Re-export the middleware from src/middleware.ts
-export { default, config } from './src/middleware';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './src/i18n/routing';
 
-// Additional code to handle CSS loading
-import './src/styles.css'; // Ensure CSS is loaded
+export default createMiddleware(routing);
+
+export const config = {
+  matcher: ['/((?!api|_next|.*\\..*).*)']
+};
+
+// Remove the CSS import as it's not valid in middleware
+// import './src/styles.css'; // Ensure CSS is loaded

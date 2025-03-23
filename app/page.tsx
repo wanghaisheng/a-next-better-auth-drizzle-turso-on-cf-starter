@@ -10,7 +10,7 @@ export default function Home() {
                 <div className="flex justify-center w-full">
                     <Image
                         className="dark:invert"
-                        src="/next.svg"
+                        src="/next.svg"  // This path should be relative to the public directory
                         alt="Next.js logo"
                         width={180}
                         height={38}
@@ -129,140 +129,8 @@ export default function Home() {
                 </a>
             </footer>
 
-            {/* Fallback styling */}
-            <style jsx>{`
-                /* Base styles */
-                .grid {
-                    display: grid;
-                }
-                .flex {
-                    display: flex;
-                }
-                .flex-col {
-                    flex-direction: column;
-                }
-                .items-center {
-                    align-items: center;
-                }
-                .justify-center {
-                    justify-content: center;
-                }
-                .justify-items-center {
-                    justify-items: center;
-                }
-                .gap-4 {
-                    gap: 1rem;
-                }
-                .gap-6 {
-                    gap: 1.5rem;
-                }
-                .gap-8 {
-                    gap: 2rem;
-                }
-                .gap-16 {
-                    gap: 4rem;
-                }
-                .p-8 {
-                    padding: 2rem;
-                }
-                .pb-20 {
-                    padding-bottom: 5rem;
-                }
-                .min-h-screen {
-                    min-height: 100vh;
-                }
-
-                /* Typography */
-                .text-3xl {
-                    font-size: 1.875rem;
-                    line-height: 2.25rem;
-                }
-                .font-bold {
-                    font-weight: 700;
-                }
-                .text-center {
-                    text-align: center;
-                }
-                .mb-4 {
-                    margin-bottom: 1rem;
-                }
-                .mb-6 {
-                    margin-bottom: 1.5rem;
-                }
-
-                /* List */
-                .list-disc {
-                    list-style-type: disc;
-                }
-                .list-inside {
-                    list-style-position: inside;
-                }
-                .space-y-2 > * + * {
-                    margin-top: 0.5rem;
-                }
-
-                /* Link styles */
-                .rounded-full {
-                    border-radius: 9999px;
-                }
-                .border {
-                    border-width: 1px;
-                }
-                .border-solid {
-                    border-style: solid;
-                }
-                .border-transparent {
-                    border-color: transparent;
-                }
-                .transition-colors {
-                    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-                    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-                    transition-duration: 150ms;
-                }
-                .bg-foreground {
-                    background-color: #000;
-                }
-                .text-background {
-                    color: #fff;
-                }
-
-                /* Media query for small screens */
-                @media (min-width: 640px) {
-                    .sm\\:p-20 {
-                        padding: 5rem;
-                    }
-                    .sm\\:text-left {
-                        text-align: left;
-                    }
-                    .sm\\:items-start {
-                        align-items: flex-start;
-                    }
-                    .sm\\:flex-row {
-                        flex-direction: row;
-                    }
-                    .sm\\:text-base {
-                        font-size: 1rem;
-                        line-height: 1.5rem;
-                    }
-                    .sm\\:h-12 {
-                        height: 3rem;
-                    }
-                    .sm\\:px-5 {
-                        padding-left: 1.25rem;
-                        padding-right: 1.25rem;
-                    }
-                }
-
-                /* Dark mode styles */
-                @media (prefers-color-scheme: dark) {
-                    .dark\\:invert {
-                        filter: invert(1);
-                    }
-                    .dark\\:hover\\:bg-\\[\\#ccc\\]:hover {
-                        background-color: #ccc;
-                    }
-                }
-            `}</style>
+            {/* Remove the fallback styling section */}
+            {/* <style jsx>{`...`}</style> */}
         </div>
     );
 }
