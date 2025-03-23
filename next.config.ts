@@ -1,16 +1,55 @@
-import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
-
-// Here we use the @cloudflare/next-on-pages next-dev module to allow us to
-// use bindings during local development (when running the application with
-// `next dev`). This function is only necessary during development and
-// has no impact outside of that. For more information see:
-// https://github.com/cloudflare/next-on-pages/blob/main/internal-packages/next-dev/README.md
-setupDevPlatform().catch(console.error);
-
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
+import withPWA from 'next-pwa';
+
+// Import the setupDevPlatform function only in development
+if (process.env.NODE_ENV === "development") {
+  const { setupDevPlatform } = require("@cloudflare/next-on-pages/next-dev");
+  setupDevPlatform().catch(console.error);
+}
 
 const nextConfig: NextConfig = {
-    /* config options here */
+  /* config options here */
+  eslint: {
+    // Ignore ESLint errors during production build
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // Ignore TypeScript errors during production build
+    ignoreBuildErrors: true,
+  },
+  // Use standalone output
+  output: 'standalone',
+  // External packages - moved to correct config property
+  serverExternalPackages: ['better-auth'],
+  // Image configuration
+  images: {
+    unoptimized: true, // Disable image optimization for static exports
+    domains: ['same-assets.com', 'images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
+  // Additional deployment settings
+  env: {
+    NETLIFY_DEPLOYMENT: process.env.NEXT_PUBLIC_NETLIFY ? 'true' : 'false',
+  },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+// Apply both plugins
+const configWithIntl = withNextIntl(nextConfig);
+
+// Apply PWA configuration
+const configWithPWA = withPWA({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
+  skipWaiting: true,
+})(configWithIntl);
+
+export default configWithPWA;

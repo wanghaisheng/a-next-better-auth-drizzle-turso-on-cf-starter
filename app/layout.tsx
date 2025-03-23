@@ -1,5 +1,30 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import { GlobalNav } from "@/components/global-nav";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  title: "Next.js Better Auth",
+  description: "Next.js authentication application with Drizzle ORM and Turso database",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "BetterAuth",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+// Move themeColor to viewport as per Next.js recommendation
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export default function RootLayout({
     children,
@@ -8,15 +33,26 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <head />
-            <body className={`antialiased`}>
+            <head>
+                <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+                {/* Force the browser to reload CSS */}
+                <link rel="stylesheet" href="/reset.css" />
+                <link rel="stylesheet" href="/globals.css" />
+            </head>
+            <body className="antialiased bg-background text-foreground">
+                {/* Script to ensure CSS is loaded properly */}
+                <Script src="/inject-styles.js" strategy="beforeInteractive" />
+
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
                     enableSystem
                     disableTransitionOnChange
                 >
-                    {children}
+                    <GlobalNav />
+                    <div className="pt-14">
+                        {children}
+                    </div>
                 </ThemeProvider>
             </body>
         </html>

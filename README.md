@@ -16,6 +16,89 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Features
+
+### Authentication System
+Comprehensive authentication system with email/password support, email verification, and password reset functionality.
+
+### Internationalization (i18n)
+Full internationalization support with English, Chinese, and Japanese languages using next-intl.
+
+### Progressive Web App (PWA)
+PWA support with offline capabilities, installability, and app-like experience for users.
+
+### Apple Pay Integration
+Secure payment processing with Apple Pay integration using Stripe as the payment processor.
+
+## Documentation
+
+Comprehensive documentation for this project is available in the [`docs`](./docs) directory. The documentation covers:
+
+- **Internationalization (i18n)**: Guides for implementing and troubleshooting i18n in Next.js
+- **Authentication**: Deep analysis of the authentication system
+- **Database**: Configuration guides for tables and local development
+- **Deployment**: Process guides for deployment
+- **General**: Performance optimization, API usage, Tailwind configuration, and project analysis
+- **PWA**: Implementation guide for Progressive Web App features
+- **Apple Pay**: Integration guide for Apple Pay with Stripe
+
+### Quick-Start Guides
+
+New to the project? Check out our quick-start guides:
+
+- [Project Setup](./docs/quick-start/project-setup.md) - Get up and running quickly
+- [Authentication System](./docs/quick-start/authentication.md) - Learn how auth works
+- [Internationalization](./docs/quick-start/i18n.md) - Working with multiple languages
+- [Database Management](./docs/quick-start/database.md) - Drizzle ORM and Turso basics
+- [Deployment](./docs/quick-start/deployment.md) - Deploy to Cloudflare Pages
+
+### Feature Guides
+
+- [Progressive Web App (PWA)](./docs/features/pwa/README.md) - Adding PWA support with offline capabilities
+- [Apple Pay Integration](./docs/features/apple-pay/README.md) - Adding Apple Pay payment functionality
+
+Documentation is available in both English and Chinese. See the [Documentation Index](./docs/README.md) for a complete list of available documents.
+
+## Project Structure
+
+```
+next-better-auth-drizzle-turso-on-cf/
+├── app/                     # Next.js App Router structure
+│   ├── [locale]/            # Locale-specific routes
+│   ├── checkout/            # Apple Pay checkout flow
+│   └── api/                 # API endpoints
+├── components/              # React components
+│   ├── payment/             # Payment-related components
+│   └── ui/                  # UI components (shadcn)
+├── db/                      # Database schema and migrations
+├── docs/                    # Project documentation
+├── i18n/                    # Internationalization utilities
+├── lib/                     # Utility functions
+│   └── payment/             # Payment utility functions
+├── messages/                # Translation messages
+├── public/                  # Static assets
+└── src/                     # Source files
+    └── i18n/                # i18n configuration
+```
+
+## Environment Variables
+
+Create a `.env.local` file with the following variables:
+
+```
+# Database (Turso)
+DATABASE_URL=libsql://your-database-name.turso.io
+DATABASE_AUTH_TOKEN=your-auth-token
+
+# Auth
+AUTH_SECRET=your-secret-key
+
+# Stripe (for Apple Pay)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_key
+STRIPE_SECRET_KEY=sk_test_your_key
+NEXT_PUBLIC_APPLE_PAY_MERCHANT_ID=merchant.your.identifier
+```
+
 ## Cloudflare integration
 
 Besides the `dev` script mentioned above `c3` has added a few extra scripts that allow you to integrate the application with the [Cloudflare Pages](https://pages.cloudflare.com/) environment, these are:

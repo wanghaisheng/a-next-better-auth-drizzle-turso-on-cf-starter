@@ -1,0 +1,95 @@
+{
+  "common": {
+    "welcome": "Welcome to Next.js",
+    "getStartedByEditing": "Get started by editing",
+    "saveAndSeeChanges": "Save your changes to see results right away in the browser.",
+    "loginNow": "Login Now",
+    "createAccount": "Create Account",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "learn": "Learn Next.js",
+    "examples": "Templates & Examples",
+    "goToNextjs": "Go to Next.js",
+    "mobileMenu": "Mobile menu"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "signup": "Sign up",
+    "applePayCheckout": "Apple Pay"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "submitButton": "Sign in",
+      "forgotPassword": "Forgot your password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "nameLabel": "Name",
+      "submitButton": "Create account",
+      "haveAccount": "Already have an account?",
+      "login": "Login",
+      "description": "Enter your information to create an account",
+      "firstNameLabel": "First name",
+      "lastNameLabel": "Last name",
+      "confirmPasswordLabel": "Confirm Password",
+      "profileImageLabel": "Profile Image (optional)",
+      "passwordMismatch": "Please ensure your password and confirm password match."
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "emailLabel": "Email",
+      "submitButton": "Reset password",
+      "backToLogin": "Back to login"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "newPasswordLabel": "New password",
+      "confirmPasswordLabel": "Confirm password",
+      "submitButton": "Reset password",
+      "backToLogin": "Back to login"
+    },
+    "logout": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "enterEmailToLogin": "Enter your email below to login to your account",
+    "forgotPassword": "Forgot password?",
+    "dontHaveAccount": "Don't have an account?",
+    "verifyEmailRequired": "Email Verification Required",
+    "verifyEmailDescription": "Please verify your email address to access the dashboard",
+    "checkInboxForVerification": "Check your inbox for a verification email. You'll need to verify your email address before you can access this page.",
+    "resendVerificationEmail": "Resend Verification Email"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your dashboard",
+    "emailVerified": "Email verified",
+    "emailNotVerified": "Email not verified",
+    "emailStatus": "Email status",
+    "verifyEmailButton": "Verify email",
+    "sendVerificationEmail": "Send verification email",
+    "emailSent": "Verification email sent successfully!",
+    "error": {
+      "title": "Dashboard Error",
+      "message": "Unable to load dashboard data. This may be due to database configuration issues.",
+      "dbInfo": "For Edge runtime compatibility, ensure you've configured a valid remote Turso database URL."
+    }
+  },
+  "errors": {
+    "invalidCredentials": "Invalid credentials",
+    "userNotFound": "User not found",
+    "emailAlreadyInUse": "Email already in use",
+    "wrongPassword": "Wrong password",
+    "generic": "Something went wrong. Please try again."
+  }
+}

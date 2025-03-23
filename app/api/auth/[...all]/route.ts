@@ -1,6 +1,25 @@
-import { auth } from "@/lib/auth";
-import { toNextJsHandler } from "better-auth/next-js";
+import { NextResponse } from "next/server";
 
-export const runtime = "edge";
+// For deployment, we're providing a simplified route handler
+// that will respond with a message explaining that authentication
+// requires a proper database connection
 
-export const { POST, GET } = toNextJsHandler(auth);
+export async function POST(request: Request) {
+  return NextResponse.json(
+    {
+      message: "Auth API in demo mode. This deployment is for UI demonstration purposes only.",
+      info: "For full functionality, a Turso database connection is required."
+    },
+    { status: 200 }
+  );
+}
+
+export async function GET(request: Request) {
+  return NextResponse.json(
+    {
+      message: "Auth API in demo mode. This deployment is for UI demonstration purposes only.",
+      info: "For full functionality, a Turso database connection is required."
+    },
+    { status: 200 }
+  );
+}

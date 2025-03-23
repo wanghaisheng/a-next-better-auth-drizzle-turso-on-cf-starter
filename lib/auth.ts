@@ -7,12 +7,15 @@ import { hash, verify } from "./auth-hasher";
 import { account, db, session, user, verification } from "../db";
 
 const from = process.env.BETTER_AUTH_EMAIL || "delivered@resend.dev";
+const secret = process.env.BETTER_AUTH_SECRET || "development-secret-key-please-change-in-production";
 
 export const auth = betterAuth({
     database: drizzleAdapter(db, {
         provider: "sqlite",
         schema: { account, session, user, verification },
     }),
+    // Explicitly set the auth secret to avoid warnings
+    secret,
     emailAndPassword: {
         enabled: true, // Enables email/password auth out of the box
         requireEmailVerification: !(process.env.VERIFY_EMAIL === "false"),

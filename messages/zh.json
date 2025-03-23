@@ -1,0 +1,95 @@
+{
+  "common": {
+    "welcome": "欢迎使用Next.js",
+    "getStartedByEditing": "开始编辑",
+    "saveAndSeeChanges": "保存更改以立即在浏览器中查看结果。",
+    "loginNow": "立即登录",
+    "createAccount": "创建账户",
+    "name": "姓名",
+    "email": "电子邮件",
+    "password": "密码",
+    "learn": "学习Next.js",
+    "examples": "模板和示例",
+    "goToNextjs": "前往Next.js",
+    "mobileMenu": "移动菜单"
+  },
+  "nav": {
+    "home": "首页",
+    "dashboard": "控制面板",
+    "login": "登录",
+    "signup": "注册",
+    "applePayCheckout": "Apple Pay"
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "emailLabel": "电子邮件",
+      "passwordLabel": "密码",
+      "submitButton": "登录",
+      "forgotPassword": "忘记密码?",
+      "noAccount": "没有账户?",
+      "signUp": "注册"
+    },
+    "signup": {
+      "title": "注册",
+      "emailLabel": "电子邮件",
+      "passwordLabel": "密码",
+      "nameLabel": "姓名",
+      "submitButton": "创建账户",
+      "haveAccount": "已有账户?",
+      "login": "登录",
+      "description": "输入您的信息以创建账户",
+      "firstNameLabel": "名",
+      "lastNameLabel": "姓",
+      "confirmPasswordLabel": "确认密码",
+      "profileImageLabel": "个人头像（可选）",
+      "passwordMismatch": "请确保您的密码和确认密码匹配。"
+    },
+    "forgotPassword": {
+      "title": "忘记密码",
+      "emailLabel": "电子邮件",
+      "submitButton": "重置密码",
+      "backToLogin": "返回登录"
+    },
+    "resetPassword": {
+      "title": "重置密码",
+      "newPasswordLabel": "新密码",
+      "confirmPasswordLabel": "确认密码",
+      "submitButton": "重置密码",
+      "backToLogin": "返回登录"
+    },
+    "logout": "退出登录",
+    "email": "电子邮件",
+    "password": "密码",
+    "rememberMe": "记住我",
+    "enterEmailToLogin": "输入您的邮箱以登录您的账户",
+    "forgotPassword": "忘记密码?",
+    "dontHaveAccount": "没有账户?",
+    "verifyEmailRequired": "需要验证电子邮件",
+    "verifyEmailDescription": "请验证您的电子邮件地址以访问控制面板",
+    "checkInboxForVerification": "查看您的收件箱以获取验证电子邮件。您需要在访问此页面之前验证您的电子邮件地址。",
+    "resendVerificationEmail": "重新发送验证邮件"
+  },
+  "dashboard": {
+    "title": "控制面板",
+    "welcome": "欢迎来到您的控制面板",
+    "emailVerified": "电子邮件已验证",
+    "emailNotVerified": "电子邮件未验证",
+    "emailStatus": "电子邮件状态",
+    "verifyEmailButton": "验证电子邮件",
+    "sendVerificationEmail": "发送验证邮件",
+    "emailSent": "验证邮件发送成功！",
+    "error": {
+      "title": "控制面板错误",
+      "message": "无法加载控制面板数据。这可能是由于数据库配置问题。",
+      "dbInfo": "为了Edge运行时兼容性，请确保您已配置有效的远程Turso数据库URL。"
+    }
+  },
+  "errors": {
+    "invalidCredentials": "凭据无效",
+    "userNotFound": "找不到用户",
+    "emailAlreadyInUse": "电子邮件已被使用",
+    "wrongPassword": "密码错误",
+    "generic": "出现问题。请再试一次。"
+  }
+}

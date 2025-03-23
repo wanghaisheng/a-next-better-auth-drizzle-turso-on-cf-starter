@@ -1,0 +1,95 @@
+{
+  "common": {
+    "welcome": "Next.jsへようこそ",
+    "getStartedByEditing": "編集を始める",
+    "saveAndSeeChanges": "変更を保存して、ブラウザですぐに結果を確認できます。",
+    "loginNow": "今すぐログイン",
+    "createAccount": "アカウント作成",
+    "name": "名前",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "learn": "Next.jsを学ぶ",
+    "examples": "テンプレートと例",
+    "goToNextjs": "Next.jsへ",
+    "mobileMenu": "モバイルメニュー"
+  },
+  "nav": {
+    "home": "ホーム",
+    "dashboard": "ダッシュボード",
+    "login": "ログイン",
+    "signup": "サインアップ",
+    "applePayCheckout": "Apple Pay"
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "emailLabel": "メールアドレス",
+      "passwordLabel": "パスワード",
+      "submitButton": "サインイン",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "signUp": "サインアップ"
+    },
+    "signup": {
+      "title": "サインアップ",
+      "emailLabel": "メールアドレス",
+      "passwordLabel": "パスワード",
+      "nameLabel": "名前",
+      "submitButton": "アカウント作成",
+      "haveAccount": "すでにアカウントをお持ちですか？",
+      "login": "ログイン",
+      "description": "アカウントを作成するには情報を入力してください",
+      "firstNameLabel": "名",
+      "lastNameLabel": "姓",
+      "confirmPasswordLabel": "パスワードの確認",
+      "profileImageLabel": "プロフィール画像（任意）",
+      "passwordMismatch": "パスワードと確認用パスワードが一致していることを確認してください。"
+    },
+    "forgotPassword": {
+      "title": "パスワードをお忘れの方",
+      "emailLabel": "メールアドレス",
+      "submitButton": "パスワードをリセット",
+      "backToLogin": "ログインに戻る"
+    },
+    "resetPassword": {
+      "title": "パスワードのリセット",
+      "newPasswordLabel": "新しいパスワード",
+      "confirmPasswordLabel": "パスワードの確認",
+      "submitButton": "パスワードをリセット",
+      "backToLogin": "ログインに戻る"
+    },
+    "logout": "ログアウト",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "rememberMe": "ログイン状態を保持",
+    "enterEmailToLogin": "アカウントにログインするにはメールアドレスを入力してください",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "dontHaveAccount": "アカウントをお持ちでないですか？",
+    "verifyEmailRequired": "メール認証が必要です",
+    "verifyEmailDescription": "ダッシュボードにアクセスするには、メールアドレスを確認してください",
+    "checkInboxForVerification": "確認メールを受信トレイで確認してください。このページにアクセスする前にメールアドレスを確認する必要があります。",
+    "resendVerificationEmail": "確認メールを再送信"
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "welcome": "ダッシュボードへようこそ",
+    "emailVerified": "メール確認済み",
+    "emailNotVerified": "メール未確認",
+    "emailStatus": "メールの状態",
+    "verifyEmailButton": "メールを確認",
+    "sendVerificationEmail": "確認メールを送信",
+    "emailSent": "確認メールを送信しました！",
+    "error": {
+      "title": "ダッシュボードエラー",
+      "message": "ダッシュボードデータを読み込めません。これはデータベース設定の問題によるものかもしれません。",
+      "dbInfo": "Edge ランタイムの互換性のために、有効なリモート Turso データベース URL を設定してください。"
+    }
+  },
+  "errors": {
+    "invalidCredentials": "認証情報が無効です",
+    "userNotFound": "ユーザーが見つかりません",
+    "emailAlreadyInUse": "メールアドレスはすでに使用されています",
+    "wrongPassword": "パスワードが間違っています",
+    "generic": "問題が発生しました。もう一度お試しください。"
+  }
+}

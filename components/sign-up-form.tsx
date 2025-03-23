@@ -18,10 +18,14 @@ import { PasswordInput } from "@/components/ui/password-input";
 import Image from "next/image";
 import { signUp } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { useTranslations } from 'next-intl';
+// Import component styles
+import styles from '../src/components.module.css';
 
 export type SignUpFormProps = ComponentPropsWithoutRef<"div">;
 
 export function SignUpForm({ className, ...props }: SignUpFormProps) {
+    const t = useTranslations('auth');
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -46,21 +50,21 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
     };
 
     return (
-        <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card>
-                <CardHeader>
-                    <CardTitle className="text-2xl">Sign Up</CardTitle>
-                    <CardDescription>
-                        Enter your information to create an account
+        <div className={cn("flex flex-col gap-6", className, styles.flexCol, styles.gap4)} {...props}>
+            <Card className={styles.card}>
+                <CardHeader className={styles.cardHeader}>
+                    <CardTitle className={`text-2xl ${styles.cardTitle}`}>{t('signup.title')}</CardTitle>
+                    <CardDescription className={styles.cardDescription}>
+                        {t('signup.description', { fallback: "Enter your information to create an account" })}
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <form>
-                        <div className="flex flex-col gap-6">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="grid gap-2">
-                                    <Label htmlFor="first-name">
-                                        First name
+                <CardContent className={styles.cardContent}>
+                    <form className={styles.flexCol}>
+                        <div className={`flex flex-col gap-6 ${styles.flexCol} ${styles.gap4}`}>
+                            <div className={`grid grid-cols-2 gap-4`}>
+                                <div className={`grid gap-2 ${styles.formGroup}`}>
+                                    <Label htmlFor="first-name" className={styles.label}>
+                                        {t('signup.firstNameLabel', { fallback: "First name" })}
                                     </Label>
                                     <Input
                                         id="first-name"
@@ -71,10 +75,13 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                                             setError("");
                                         }}
                                         value={firstName}
+                                        className={styles.input}
                                     />
                                 </div>
-                                <div className="grid gap-2">
-                                    <Label htmlFor="last-name">Last name</Label>
+                                <div className={`grid gap-2 ${styles.formGroup}`}>
+                                    <Label htmlFor="last-name" className={styles.label}>
+                                        {t('signup.lastNameLabel', { fallback: "Last name" })}
+                                    </Label>
                                     <Input
                                         id="last-name"
                                         placeholder="Doe"
@@ -84,12 +91,13 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                                             setError("");
                                         }}
                                         value={lastName}
+                                        className={styles.input}
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Email</Label>
+                            <div className={`grid gap-2 ${styles.formGroup}`}>
+                                <Label htmlFor="email" className={styles.label}>{t('email')}</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -100,11 +108,12 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                                         setError("");
                                     }}
                                     value={email}
+                                    className={styles.input}
                                 />
                             </div>
 
-                            <div className="grid gap-2">
-                                <Label htmlFor="password">Password</Label>
+                            <div className={`grid gap-2 ${styles.formGroup}`}>
+                                <Label htmlFor="password" className={styles.label}>{t('password')}</Label>
                                 <PasswordInput
                                     id="password"
                                     value={password}
@@ -113,13 +122,14 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                                         setError("");
                                     }}
                                     autoComplete="new-password"
-                                    placeholder="Password"
+                                    placeholder={t('password')}
+                                    className={styles.input}
                                 />
                             </div>
 
-                            <div className="grid gap-2">
-                                <Label htmlFor="password-confirmation">
-                                    Confirm Password
+                            <div className={`grid gap-2 ${styles.formGroup}`}>
+                                <Label htmlFor="password-confirmation" className={styles.label}>
+                                    {t('signup.confirmPasswordLabel', { fallback: "Confirm Password" })}
                                 </Label>
                                 <PasswordInput
                                     id="password-confirmation"
@@ -129,15 +139,16 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                                         setError("");
                                     }}
                                     autoComplete="new-password"
-                                    placeholder="Confirm Password"
+                                    placeholder={t('signup.confirmPasswordLabel', { fallback: "Confirm Password" })}
+                                    className={styles.input}
                                 />
                             </div>
 
-                            <div className="grid gap-2">
-                                <Label htmlFor="image">
-                                    Profile Image (optional)
+                            <div className={`grid gap-2 ${styles.formGroup}`}>
+                                <Label htmlFor="image" className={styles.label}>
+                                    {t('signup.profileImageLabel', { fallback: "Profile Image (optional)" })}
                                 </Label>
-                                <div className="flex items-end gap-4">
+                                <div className={`flex items-end gap-4 ${styles.flexRow}`}>
                                     {imagePreview && (
                                         <div className="relative w-16 h-16 rounded-sm overflow-hidden">
                                             <Image
@@ -148,13 +159,13 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                                             />
                                         </div>
                                     )}
-                                    <div className="flex items-center gap-2 w-full">
+                                    <div className={`flex items-center gap-2 w-full ${styles.flexRow}`}>
                                         <Input
                                             id="image"
                                             type="file"
                                             accept="image/*"
                                             onChange={handleImageChange}
-                                            className="w-full"
+                                            className={`w-full ${styles.input}`}
                                         />
                                         {imagePreview && (
                                             <X
@@ -177,13 +188,13 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
 
                             <Button
                                 type="submit"
-                                className="w-full"
+                                className={`w-full ${styles.button}`}
                                 disabled={loading}
                                 onClick={async (e) => {
                                     e.preventDefault();
                                     if (password !== passwordConfirmation) {
                                         setError(
-                                            "Please ensure your password and confirm password match.",
+                                            t('signup.passwordMismatch', { fallback: "Please ensure your password and confirm password match." }),
                                         );
                                         return;
                                     }
@@ -221,22 +232,89 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                                         className="animate-spin"
                                     />
                                 ) : (
-                                    "Sign Up"
+                                    t('signup.submitButton')
                                 )}
                             </Button>
                         </div>
-                        <div className="mt-4 text-center text-sm">
-                            Already have an account?{" "}
+                        <div className={`mt-4 text-center text-sm ${styles.textCenter} ${styles.mt4}`}>
+                            {t('signup.haveAccount', { fallback: "Already have an account?" })}{" "}
                             <Link
                                 href="/login"
-                                className="underline underline-offset-4"
+                                className={`underline underline-offset-4 ${styles.link}`}
                             >
-                                Login
+                                {t('login.title')}
                             </Link>
                         </div>
                     </form>
                 </CardContent>
             </Card>
+
+            {/* Fallback styling in case CSS modules don't load */}
+            <style jsx>{`
+                .card {
+                    background-color: white;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    border: 1px solid #eaeaea;
+                }
+                .cardTitle {
+                    font-size: 24px;
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                }
+                .cardDescription {
+                    color: #666;
+                    font-size: 14px;
+                    margin-bottom: 16px;
+                }
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                }
+                .formGroup {
+                    margin-bottom: 16px;
+                }
+                button {
+                    background-color: #000;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 10px 16px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    width: 100%;
+                }
+                button:disabled {
+                    background-color: #999;
+                }
+                a {
+                    color: #0070f3;
+                    text-decoration: none;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+                .input {
+                    width: 100%;
+                    padding: 8px 12px;
+                    border: 1px solid #ddd;
+                    border-radius: 6px;
+                    font-size: 16px;
+                }
+                .grid {
+                    display: grid;
+                }
+                .grid-cols-2 {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                .gap-4 {
+                    gap: 16px;
+                }
+            `}</style>
         </div>
     );
 }
