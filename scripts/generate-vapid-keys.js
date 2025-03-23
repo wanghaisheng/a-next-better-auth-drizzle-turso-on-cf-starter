@@ -1,5 +1,5 @@
 // 生成VAPID密钥的脚本
-// 运行方式: node generate-vapid-keys.js
+// 运行方式: bun generate-vapid-keys.js
 
 const webpush = require('web-push');
 

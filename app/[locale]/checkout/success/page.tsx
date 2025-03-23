@@ -7,9 +7,10 @@ import { setRequestLocale } from "next-intl/server";
  * Payment success page
  * Displayed after a successful payment
  */
-export default function SuccessPage({ params }: { params: { locale: string } }) {
+export default async function SuccessPage({ params }: { params: { locale: string } }) {
   // Enable static rendering with explicit locale
-  setRequestLocale(params.locale);
+  const locale = await Promise.resolve(params.locale);
+  await setRequestLocale(locale);
   
   const t = useTranslations('checkout.success');
 

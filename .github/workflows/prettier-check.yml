@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run Prettier Check 🔎
-        run: npx prettier --check .
+        run: bun x prettier --check .

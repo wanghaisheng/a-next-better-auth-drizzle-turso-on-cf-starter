@@ -8,9 +8,10 @@ import { setRequestLocale } from "next-intl/server";
  * Checkout page component
  * Displays the checkout form with Apple Pay integration
  */
-export default function CheckoutPage({ params }: { params: { locale: string } }) {
+export default async function CheckoutPage({ params }: { params: { locale: string } }) {
   // Enable static rendering with explicit locale
-  setRequestLocale(params.locale);
+  const locale = await Promise.resolve(params.locale);
+  await setRequestLocale(locale);
   
   const t = useTranslations('checkout');
 

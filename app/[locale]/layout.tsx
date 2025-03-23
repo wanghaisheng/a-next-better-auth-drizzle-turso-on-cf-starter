@@ -49,7 +49,7 @@ export default async function LocaleLayout({
 // Generate metadata
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   // Destructure the locale to avoid nextjs warning
-  const { locale } = params;
+  const locale = await Promise.resolve(params.locale);
 
   // Set the locale for metadata
   await setRequestLocale(locale);
